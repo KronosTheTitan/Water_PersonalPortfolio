@@ -32,6 +32,9 @@ float4 _EdgeColor;
 fixed _IntersectionThreshold;
 fixed _IntersectionPow;
 
+float2 _normalVelocity1 = float2(2,2);
+float2 _normalVelocity2;
+
 sampler2D _Normal1;
 float4 _Normal1_ST;
 
@@ -83,11 +86,15 @@ fixed4 frag (Interpolators i) : SV_Target
     // "foam line"
     fixed intersect = saturate((abs(depth)) / _IntersectionThreshold);
     col += _EdgeColor * pow(1 - intersect, 4) * _IntersectionPow;
-    
-    float3 normal1 = UnpackNormal( tex2D(_Normal1, (i.uv.xy)));
-    float3 normal2 = UnpackNormal( tex2D(_Normal2, (i.uv.xy)));
-    float3 normal = clamp(0,1,normal1+normal2);
-    float3 tangentSpaceNormal = normal1;
+
+
+    //float2 uv1 = float2(i.uv.x,i.uv.y);
+    float2 uv1 = i.uv;
+    float2 uv2 = float2(i.uv.x,i.uv.y*_Time.y);
+    float3 normal1 = UnpackNormal( tex2D(_Normal1,i.uv));
+    float3 normal2 = UnpackNormal( tex2D(_Normal2,uv2));
+    float3 normal = lerp(normal1,normal2,.5f);
+    float3 tangentSpaceNormal = normal;
 
     float3x3 mtxTangToWorld = {
         i.tangent.x, i.bitangent.x,i.normal.x,
@@ -96,6 +103,7 @@ fixed4 frag (Interpolators i) : SV_Target
     };
     
     float3 N = mul(mtxTangToWorld,tangentSpaceNormal);
+    //float3 N = i.normal;
     float3 L = normalize(UnityWorldSpaceLightDir(i.wPos));
 
     float attenuation = LIGHT_ATTENUATION(i);

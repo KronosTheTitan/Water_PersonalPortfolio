@@ -49,15 +49,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+        m_Texture: {fileID: 2800000, guid: 21d2f80f908267e40ad574edb6206d79, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal1:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: ab4db94e66416b94d9a5a999fde34816, type: 3}
+        m_Scale: {x: 4, y: 4}
         m_Offset: {x: 0, y: 0}
     - _Normal2:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 76e2892b7ea2aa9479fdf84ebc60d757, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -77,7 +77,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _ExtraHeight: 0
-    - _Gloss: 0
+    - _Gloss: 0.675
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -91,12 +91,14 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WaveAmp: 1
-    - _WaveSpeed: 0
+    - _WaveAmp: 0.25
+    - _WaveSpeed: 50
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 0, g: 0.27570212, b: 0.6981132, a: 1}
     - _Color2: {r: 0.050980393, g: 0.42352942, b: 0.8, a: 0.5254902}
     - _EdgeColor: {r: 0.07186722, g: 0.7957438, b: 0.8962264, a: 0.19215687}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _normalVelocit1: {r: 1, g: 1, b: 0, a: 0}
+    - _normalVelocit2: {r: -1, g: -1, b: 0, a: 0}
   m_BuildTextureStacks: []
