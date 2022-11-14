@@ -89,9 +89,9 @@ fixed4 frag (Interpolators i) : SV_Target
 
 
     //float2 uv1 = float2(i.uv.x,i.uv.y);
-    float2 uv1 = i.uv;
-    float2 uv2 = float2(i.uv.x,i.uv.y*_Time.y);
-    float3 normal1 = UnpackNormal( tex2D(_Normal1,i.uv));
+    float2 uv1 = i.uv.xy - (_Time.y * .09f);
+    float2 uv2 = i.uv.xy + (_Time.y * .09f);
+    float3 normal1 = UnpackNormal( tex2D(_Normal1,uv1));
     float3 normal2 = UnpackNormal( tex2D(_Normal2,uv2));
     float3 normal = lerp(normal1,normal2,.5f);
     float3 tangentSpaceNormal = normal;
